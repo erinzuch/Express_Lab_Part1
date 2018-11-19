@@ -11,5 +11,5 @@ function CartService($http) {
 
 
 angular
-.app("App")
+.module("App")
 .service("CartService", CartService)

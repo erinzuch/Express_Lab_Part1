@@ -3,7 +3,11 @@ const cart = {
     template: `
     <button ng-click="$ctrl.getAllItems();"></button>
     <ul>
-        <li ng-repeat="obj in $ctrl.items;">{{obj.text}} </li>
+        <li ng-repeat="obj in $ctrl.items;">
+            <p>Product: {{obj.product}}</p> 
+            <p>Price: {{obj.price}}</p>
+            <p>Quantity: {{obj.quantity}}</p>
+        </li>
     </ul>
 
 `,
@@ -13,6 +17,7 @@ const cart = {
             CartService.getAllItems().then((response) => {
                 console.log(response); 
                 vm.items = response.data; 
+                console.log(vm.items);
             })
         }
     }]
