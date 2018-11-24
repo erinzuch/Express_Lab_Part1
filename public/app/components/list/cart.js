@@ -11,19 +11,33 @@ const cart = {
     </ul>
 
 `,
-    controller: ["CartService", function(CartService) {
-        const vm = this; 
-        vm.getAllItems = () => {
-            CartService.getAllItems().then((response) => {
-                console.log(response); 
-                vm.items = response.data; 
-                console.log(vm.items);
-            })
+    controller: ["CartService", function (CartService) {
+        const vm = this;
+        function updateItems(result) {
+            vm.getAllItems = result.data; 
         }
-    }]
+        CartService.getAllItems().then((updateItems));
 
+        // vm.getAllItems = () => {
+        //     CartService.getAllItems().then((response) => {
+        //         vm.items = response.data;
+        //         console.log(vm.items);
+        //     })
+        vm.updateItem = (editedItem) => {
+            MainService.updateItems().then((updateItems))
+        }; 
 
-};
+        vm.addItem = (newItem) => {
+            MainService.addItem().then((updateItems))
+        };
+
+        vm.deleteItem = (id) => {
+            MainService.deleteItem().then((updateItems))
+        }; 
+
+        }
+
+    ]};
 
 angular
     .module("App")
