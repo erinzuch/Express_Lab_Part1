@@ -17,7 +17,7 @@ items.post("/items", (req, res) => {
     })
 })
 items.put("/items/:id", (req, res) => {
-    pool.query("update ShoppingCart set product=$2::text, price=$3::int, quantity=$4::int)", [req.body.product, req.body.price, req.body.quantity]).then(() => {
+    pool.query("update ShoppingCart set product=$1::text, price=$2::int, quantity=$3::int where id=$4::int", [req.body.product, req.body.price, req.body.quantity, req.params.id]).then(() => {
         pool.query("select * from ShoppingCart").then((result) => {
             res.json(result.rows); 
         })

@@ -1,7 +1,7 @@
 "use strict";
 function CartService($http) {
     const self = this; 
-    self.getAllItems = () => {
+    self.getItems = () => {
         return $http({
             method: "GET",
             url: "/items"
@@ -16,17 +16,17 @@ function CartService($http) {
     };
     self.deleteItems = (id) => {
         return $http({
-            url: `/items${id}`,
+            url: `/items/${id}`,
             method: "DELETE"
         }); 
     };
     self.updateItems = (editedItem) => {
         return $http({
-            url: `/phrases/${editedItem.id}`,
+            url: `/items/${editedItem.id}`,
             method: "PUT",
             data: editedItem
-        })
-    }
+        });
+    }; 
     
     
 }
