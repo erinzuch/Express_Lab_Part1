@@ -22,8 +22,7 @@ items.put("/items/:id", (req, res) => {
             res.json(result.rows); 
         })
     })
-    // shoppingList[req.params.id] = req.body; 
-    // res.json(shoppingList)
+  
 })
 items.delete("/items/:id", (req, res) => {
     pool.query("delete from ShoppingCart where id=$1::int", [req.params.id]).then(() => {

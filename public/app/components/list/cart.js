@@ -7,6 +7,7 @@ const cart = {
         <input ng-model="newProduct.quantity" placeholder="quantity">
         <button>Add</button>
     </form
+    <section class="list">
     <ul>
         <li ng-repeat="obj in $ctrl.productList;">
             <p>Product: {{obj.product}}</p> 
@@ -15,6 +16,7 @@ const cart = {
             <button ng-click="$ctrl.deleteItem(obj.id)">x</button>
         </li>
     </ul>
+    </section>
 
 `,
     controller: ["CartService", function (CartService) {
